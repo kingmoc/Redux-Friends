@@ -1,0 +1,37 @@
+.friend-card {
+	border: 1px solid black;
+    width: 49%;
+	margin: 15px auto;
+	padding: 10px;
+
+	.ed {
+		border: 2px solid rgb(9, 193, 218);
+
+		&:hover {
+			background-color: rgb(9, 193, 218);
+			color: white;
+		}
+	}
+
+	.friend-card-buttons {
+		margin-top: 15px;
+	}
+
+	.back {
+		border: 2px solid rgb(255, 188, 3);
+
+		&:hover {
+			background-color: rgb(255, 188, 3);
+			color: white;
+		}
+	}
+	
+	.del {
+		border: 2px solid red;
+		
+		&:hover {
+			background-color: red;
+			color: white;
+		}
+	}
+}

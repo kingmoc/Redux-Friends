@@ -3,7 +3,7 @@ import "../styles/Login.scss"
 
 import { connect } from "react-redux";
 import { login } from '../actions';
-// import Loader from 'rea'
+import Loader from 'react-loader-spinner'
 
 class Login extends Component {
 
@@ -20,7 +20,7 @@ class Login extends Component {
 			credentials: {
 				...this.state.credentials,
 				[e.target.name]: e.target.value
-			} 			
+			} 			 
 		});
 	}
 
@@ -59,7 +59,13 @@ class Login extends Component {
 					onChange={this.handleChanges}
 					/>
 
-					<button>Login</button>
+					<button>
+						{this.props.loggingIn ? (
+							<Loader type="Grid" color="red" height='12' width='12' />
+						) : (
+							'Login'
+						)}
+					</button>
 
 				</form>
 				
@@ -72,7 +78,8 @@ const mapStateToProps = (state) => {
 	// console.log(state.friendsReducer.loggingIn)
   
 	return {
-		loggingIn: state.friendsReducer.loggingIn
+		loggingIn: state.friendsReducer.loggingIn,
+		error: state.friendsReducer.error
 	}
   }
   

@@ -1,4 +1,10 @@
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL } from "../actions";
+import { LOGIN_START, 
+		 LOGIN_SUCCESS, 
+		 LOGIN_FAIL,
+		 FETCH_DATA_START,
+		 FETCH_DATA_SUCCESS,
+		 FETCH_DATA_FAIL
+	   } from "../actions";
 
 
 const initialState = {
@@ -28,8 +34,27 @@ const initialState = {
 				loggingIn: false
 			}
 
+		case FETCH_DATA_START:
+			return {
+				...state,
+				error: '',
+				fetchingFriends: true
+			}
+
+		case FETCH_DATA_SUCCESS:
+			return {
+				...state,
+				fetchingFriends: false,
+				friends: action.payload
+
+			}
 	
-		case LOGIN_FAIL:
+		case FETCH_DATA_FAIL:
+			return {
+				...state,
+				fetchingFriends: false,
+				error: action.payload
+			}
 
 
 		default:
