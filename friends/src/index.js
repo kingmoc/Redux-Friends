@@ -19,15 +19,14 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 // Dependancies
 import thunk from 'redux-thunk'
 
-// const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
-const store = {}
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
 ReactDOM.render(
-	// <Provider store={store}>
+	<Provider store={store}>
 		<Router>
 			<App />
 		</Router>
-	// </Provider>
+	</Provider>
 ,document.getElementById('root')
 );
 

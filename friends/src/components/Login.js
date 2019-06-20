@@ -1,23 +1,37 @@
 import React, { Component } from 'react';
 import "../styles/Login.scss"
 
+import { connect } from "react-redux";
+import { login } from '../actions';
+// import Loader from 'rea'
+
 class Login extends Component {
 
-	state = {		
-		username: '',
-		password: ''	
+	state = {
+		credentials: {		
+			username: '',
+			password: ''
+		}	
 	}
 
 	handleChanges = e => {
 		
 		this.setState({
-			[e.target.name]: e.target.value 			
+			credentials: {
+				...this.state.credentials,
+				[e.target.name]: e.target.value
+			} 			
 		});
 	}
 
 	login = e => {
+		// console.log(this.props)
 		e.preventDefault()
-		console.log("works")
+		this.props.login(this.state.credentials)
+			.then(() => {
+				// const route = this.props.location.state.from || '/list-of-friends';
+				this.props.history.push('/list-of-friends')
+			})
 	}
 
 
@@ -54,4 +68,12 @@ class Login extends Component {
 	}
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+	// console.log(state.friendsReducer.loggingIn)
+  
+	return {
+		loggingIn: state.friendsReducer.loggingIn
+	}
+  }
+  
+  export default connect(mapStateToProps, {login})(Login);
