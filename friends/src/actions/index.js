@@ -18,7 +18,7 @@ export const login = creds => dispatch => {
 		.catch(err => console.log(err))
 }
 
-//  Exports for login Dispatches 
+//  Exports for get Friends Data Dispatches 
 export const FETCH_DATA_START = 'FETCH_DATA_START';
 export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
 export const FETCH_DATA_FAIL = 'FETCH_DATA_FAIL';
@@ -38,3 +38,36 @@ export const getData = () => dispatch => {
 		})
 
 }
+
+//  Exports for get Friends Data Dispatches 
+export const ADD_DATA_START = 'ADD_DATA_START';
+export const ADD_DATA_SUCCESS = 'ADD_DATA_SUCCESS';
+export const ADD_DATA_FAIL = 'ADD_DATA_FAIL';
+// **************************************** 
+
+export const addData = (newFriend) => dispatch => {
+	dispatch({ type: ADD_DATA_START})
+
+	axiosWithAuth()
+		.post('/friends', newFriend)
+		.then(res => {
+			console.log(res)
+			dispatch({ type: ADD_DATA_SUCCESS, payload: res.data})
+		})
+		.catch(err => {
+			console.log(err)
+			// dispatch({ type: FETCH_DATA_FAIL, payload: err.response.statusText });
+		})
+
+}
+
+
+// axios.post('http://localhost:5000/friends', this.state.newFriend)
+// 			.then((res) => {
+// 				this.props.editUpdate(res.data)
+// 				this.props.history.push('/')
+// 				console.log(res)	
+// 			})
+// 			.catch((err) => {
+// 				console.log(err)
+// 			}) 

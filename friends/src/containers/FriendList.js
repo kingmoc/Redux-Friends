@@ -10,11 +10,11 @@ import Friend from "../components/Friend"
 
 class FriendList extends Component {
 	
-	// toForm = e => {
-	// 	e.preventDefault();
-	// 	console.log(this.props)
-	// 	this.props.history.push('/form')
-	// }
+	toForm = e => {
+		e.preventDefault();
+		console.log(this.props)
+		this.props.history.push('/add-friend')
+	}
 
 	componentDidMount() {
 		this.props.getData();
@@ -26,8 +26,7 @@ class FriendList extends Component {
 			<div className="container">
 		
 				<div className="title-top">
-					<h1> List of Friends </h1> 
-					{/* <button onClick={this.toForm}>Add Friend</button> */}
+					<h1> List of Friends </h1> 					
 				</div>
 
 				{this.props.fetchingFriends && (
@@ -41,6 +40,7 @@ class FriendList extends Component {
 
 				{!this.props.fetchingFriends && this.props.friends.length > 0 && (
 				<div className="container">
+				<button onClick={this.toForm}>Add Friend</button>
 				{this.props.friends.map(friend => {
 					return (
 						<Friend 

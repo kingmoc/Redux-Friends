@@ -3,7 +3,10 @@ import { LOGIN_START,
 		 LOGIN_FAIL,
 		 FETCH_DATA_START,
 		 FETCH_DATA_SUCCESS,
-		 FETCH_DATA_FAIL
+		 FETCH_DATA_FAIL,
+		 ADD_DATA_START,
+		 ADD_DATA_SUCCESS,
+		 ADD_DATA_FAIL
 	   } from "../actions";
 
 
@@ -12,8 +15,8 @@ const initialState = {
 	deletingFriend: false,
 	fetchingFriends: false,
 	loggingIn: false,
-	savingFriends: false,
-	updatingFriend: false,
+	addingFriends: false,
+	editingFriend: false,
 	error: null
   }
 
@@ -55,6 +58,21 @@ const initialState = {
 				fetchingFriends: false,
 				error: action.payload
 			}
+
+		case ADD_DATA_START:
+			return {
+				...state, 
+				error: '',
+				addingFriends: true
+			}
+		
+		case ADD_DATA_SUCCESS:
+		return {
+			...state, 
+			friends: action.payload,
+			error: '',
+			addingFriends: false
+		}
 
 
 		default:

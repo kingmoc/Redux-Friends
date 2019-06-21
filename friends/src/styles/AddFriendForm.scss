@@ -1,0 +1,30 @@
+.form {
+	margin: 0 auto;
+    width: 30%;
+    border: black solid 1px;
+	padding: 15px;
+
+	.form-title {
+		display: inline;
+	}
+	
+	.form-info {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		button {
+			margin-top: 25px;
+			margin-left: 0px;
+		}
+	}
+
+	button {
+		margin-left: 90px;
+	}
+
+	input {
+		height: 30px;
+		
+	}
+}
