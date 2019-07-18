@@ -74,9 +74,8 @@ const initialState = {
 			addingFriends: false
 		}
 
-
 		default:
 			return state;
-		}
+	}
 
-  }
+}

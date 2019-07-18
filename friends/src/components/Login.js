@@ -81,6 +81,6 @@ const mapStateToProps = (state) => {
 		loggingIn: state.friendsReducer.loggingIn,
 		error: state.friendsReducer.error
 	}
-  }
+}
   
   export default connect(mapStateToProps, {login})(Login);
